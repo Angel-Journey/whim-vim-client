@@ -1,1 +1,163 @@
 @import '~bootstrap/scss/bootstrap';
+
+
+// $alt-color: $cyan;
+// $body-bg-color: $gray-200;
+// $font-color: $light;
+
+header {
+  background: url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80');
+  // background: url('https://image.shutterstock.com/image-illustration/old-black-background-distressed-vintage-260nw-1607779117.jpg');
+  // background: url('https://images.unsplash.com/photo-1561016444-14f747499547?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1189&q=80');
+  font-family: 'Calligraffitti', cursive;
+  padding-top: 10px;
+  padding-bottom: 0.5px;
+  width: 100%;
+}
+
+body {
+  // background-color: black;
+  // background: url('https://wallpapercave.com/wp/wp7733233.jpg');
+  background: url('https://images.unsplash.com/photo-1561016444-14f747499547?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1189&q=80')
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: full;
+  // justify-content: center;
+  // display: flex;
+  // align-items: center;
+  // html {
+  //   background: url(https://wallpapercave.com/wp/wp7733233.jpg) no-repeat center center fixed;
+  //   -webkit-background-size: cover;
+  //   -moz-background-size: cover;
+  //   -o-background-size: cover;
+  //   background-size: cover;
+  // }
+  // testing
+}
+
+h1 {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: #00B140;
+  font-size: 60px;
+}
+
+h2, h3, h4, h5, p {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  // color: #878787;
+  color: #00B140;
+}
+
+#message {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-size: 30px;
+}
+
+.buttons {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    // background: url('https://image.shutterstock.com/image-illustration/old-black-background-distressed-vintage-260nw-1607779117.jpg');
+    background: url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80');
+
+}
+
+.winner {
+  color: white;
+  font-size: 50px;
+  text-shadow: 4px 2px rgba(0, 0, 0, .25);
+}
+
+.success {
+  color: white;
+  font-size: 50px;
+  text-shadow: 4px 2px rgba(0, 0, 0, .25);
+}
+
+.failure {
+  color: maroon;
+  font-size: 30px;
+  text-shadow: 4px 2px rgba(54, 0, 0, .25);
+}
+
+.yellow {
+  color: yellow;
+  font-size: 30px;
+  text-shadow: 4px 2px rgba(255, 255, 0, .15);
+}
+
+.container {
+  background-color: black;
+  // set the container to take up 100% of the viewport's height
+  // it will scale to the entire height
+  height: 50vh;
+  width: 50vh;
+  // justify-content: center;
+  // display: flex;
+  // align-items: center;
+}
+
+.board {
+  // set the max size of the board to be 100% of the viewport's max-height
+  // -75px so we have a buffer at the bottom
+  max-height: calc(100vh - 75px);
+  // max-width: calc(100vw - 75px);
+
+  background: url('https://cdn.vox-cdn.com/thumbor/11mhrHY3u3_1VJmlhmpqQzysOP0=/0x0:1862x1284/920x613/filters:focal(783x494:1079x790):format(webp)/cdn.vox-cdn.com/uploads/chorus_image/image/60990129/AFC.0.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+
+.box {
+  border-right: 1px solid #00B140;
+  border-bottom: 1px solid #00B140;
+
+  // selecting the three right boxes, nth-child select elements based on their position
+  // 3n selects every third element (box)
+  &:nth-child(3n) {
+    border-right: 0;
+  }
+
+  // selecting the three bottom boxes
+  &:nth-last-child(-1n + 3) {
+    border-bottom: 0;
+  }
+
+  // set the minimum height for each box
+  min-height: calc(100% / 3);
+  min-width: calc(100% / 3);
+  max-width: 75vw;
+  // height: 80px;
+
+  // center the text in each box
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: black;
+  // color: #878787;
+  color: white;
+  //make the font larger, take up 15% of the viewport's height
+  // font-size: 15vh;
+  font-size: 50px;
+
+  text-shadow: 4px 2px rgba(17, 17, 17, .25);
+
+  // when moust hovers over a box, change color to:
+  &:hover {
+    background-color: #00B140;
+  }
+
+  // make sure the user cannot select the text when clicking on
+  user-select: none;
+}
