@@ -6,10 +6,11 @@
 // $font-color: $light;
 
 header {
-  background: url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80');
+  background: #fea02f;
+  // background: url('https://images.unsplash.com/photo-1524664399170-77e7118fdb6d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
   // background: url('https://image.shutterstock.com/image-illustration/old-black-background-distressed-vintage-260nw-1607779117.jpg');
   // background: url('https://images.unsplash.com/photo-1561016444-14f747499547?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1189&q=80');
-  font-family: 'Calligraffitti', cursive;
+  font-family: 'Oleo Script Swash Caps', cursive;
   padding-top: 10px;
   padding-bottom: 0.5px;
   width: 100%;
@@ -18,7 +19,8 @@ header {
 body {
   // background-color: black;
   // background: url('https://wallpapercave.com/wp/wp7733233.jpg');
-  background: url('https://images.unsplash.com/photo-1561016444-14f747499547?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1189&q=80')
+  // background: url('https://images.unsplash.com/photo-1561016444-14f747499547?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1189&q=80')
+  background: #ebd9c8;
   // background-repeat: no-repeat;
   // background-position: center;
   // background-size: full;
@@ -39,8 +41,8 @@ h1 {
   align-items: center;
   display: flex;
   justify-content: center;
-  color: #00B140;
-  font-size: 60px;
+  color: #003f5a;
+  font-size: 80px;
 }
 
 h2, h3, h4, h5, p {
@@ -64,7 +66,8 @@ h2, h3, h4, h5, p {
     display: flex;
     justify-content: center;
     // background: url('https://image.shutterstock.com/image-illustration/old-black-background-distressed-vintage-260nw-1607779117.jpg');
-    background: url('https://images.unsplash.com/photo-1585314062604-1a357de8b000?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1051&q=80');
+    // background: url('https://images.unsplash.com/photo-1524664399170-77e7118fdb6d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-color: #003f5a;
 
 }
 
