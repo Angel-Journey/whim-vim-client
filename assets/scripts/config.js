@@ -2,9 +2,11 @@
 
 let apiUrl
 const apiUrls = {
-  production: '<replace-with-heroku-url>',
-  development: 'http://localhost:4741'
+  production: 'https://whim-vim-api.herokuapp.com',
+  development: 'https://whim-vim-api.herokuapp.com'
 }
+
+// development: 'http://localhost:4741'
 
 if (window.location.hostname === 'localhost') {
   apiUrl = apiUrls.development
