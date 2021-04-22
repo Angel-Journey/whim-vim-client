@@ -8,7 +8,7 @@ const api = require('./api')
 // const gamePlay = require('./gamePlay')
 
 const onSignUpSuccess = function () {
-  $('#message').text('Success! Thank you for joinging the roster!')
+  $('#message').text('Success! Thank you for joinging Whim Vim!')
 
   $('#message').addClass('success')
 
@@ -32,7 +32,7 @@ const onSignInSuccess = function (response) {
   store.user = response.user
   // console.log(store.user.value)
   // console.log(store)
-  $('#message').text(response.user.email + ' has entered the pitch!')
+  $('#message').text(response.user.email + ' has successfully signed in!')
 
   $('#message').addClass('success')
 
@@ -53,7 +53,7 @@ const onSignInSuccess = function (response) {
 }
 
 const onSignOutSuccess = function () {
-  $('#message').text(store.user.email + ' has left the pitch!')
+  $('#message').text(store.user.email + ' has signed out!')
 
   $('#message').addClass('success')
   $('#sign-out').hide()

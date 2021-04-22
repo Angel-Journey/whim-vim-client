@@ -14,6 +14,7 @@ $(() => {
   $('#game-Board').hide()
   $('#game-history').hide()
   $('#old-game').hide()
+  // $('#new-whim').hide()
 
   $('#sign-up').on('submit', authEvents.onSignUp)
 
