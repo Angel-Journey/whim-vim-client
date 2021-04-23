@@ -120,7 +120,7 @@ const onNewWhim = function (event) {
   event.preventDefault()
   $('#newWhimModal').modal('toggle')
 
-  // event.target is our ''#sign-up' form so store it in a better named variable
+  // event.target is our ''#new-whim' form so store it in a better named variable
   const form = event.target
   // get the data from our form
   const formData = getFormFields(form)
@@ -140,6 +140,19 @@ const onNewWhim = function (event) {
     .catch(ui.onError)
 }
 
+const onWhimIndex = function (event) {
+  // prevent the defaul action of refreshing the page when a form is submitted
+  event.preventDefault()
+
+  console.log(event)
+
+  // make a request to API
+  api.whimIndex()
+    // show success or failure
+    .then(ui.onWhimIndexSuccess)
+    .catch(ui.onError)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -147,6 +160,7 @@ module.exports = {
   onNewGame,
   onGameHistory,
   onOldGameBoardID,
-  onNewWhim
+  onNewWhim,
+  onWhimIndex
   // onNewMoveClick
 }

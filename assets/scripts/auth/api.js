@@ -70,6 +70,26 @@ const newWhim = function (newWhimTitle, newWhimDetails) {
   })
 }
 
+// let whimsArray = []
+
+const whimIndex = function () {
+  return $.ajax({
+    method: 'GET',
+    // asking for index of whims
+    url: config.apiUrl + '/whims',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+    // success: function (data) {
+    //   let i
+    //   for (i in data) {
+    //     whimsArray.push(data[i])
+    //   }
+    //   console.log(whimsArray)
+    // }
+  })
+}
+
 const newGameHistory = function (gameData) {
   return $.ajax({
     method: 'GET',
@@ -122,5 +142,7 @@ module.exports = {
   newGameHistory,
   oldGameBoardID,
   // newMove,
-  newWhim
+  newWhim,
+  whimIndex
+  // whimsArray
 }

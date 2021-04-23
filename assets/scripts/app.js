@@ -31,4 +31,5 @@ $(() => {
   // $('.box').on('click', authEvents.onNewMoveClick)
 
   $('#new-whim-form').on('submit', authEvents.onNewWhim)
+  $('#display-all-whims').on('click', authEvents.onWhimIndex)
 })

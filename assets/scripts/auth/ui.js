@@ -90,12 +90,16 @@ const onError = function (err) {
   }, 5000)
 }
 
+store.whims = ''
+
 const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
   // store.user = response.user
   // console.log('Store user value is ' + store.user.value)
   // console.log('Store value is ' + store)
   console.log('This is ui.js ' + newWhimTitle)
   console.log('This is ui.js ' + newWhimDetails)
+  store.whims = newWhimTitle + ' : ' + newWhimDetails
+  console.log(store.whims)
   $('#message').text('New Whim Created!')
   $('#message').addClass('success')
 
@@ -116,6 +120,55 @@ const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
   //   // Remove the class of 'success' from the element
   //   $('#message').removeClass('success')
   // }, 2500)
+}
+
+const onWhimIndexSuccess = function (responseData) {
+  // console.log('This is the index list ' + whimsArray)
+  $('#sign-up-btn').hide()
+  $('#sign-in-btn').hide()
+  $('#sign-out').show()
+  const whimsArray = responseData
+  console.log(whimsArray)
+  console.log(whimsArray.whims)
+  // console.log(data.whims.array)
+  // console.log(data.whims[0])
+  // console.log(data.whims[0].title)
+  // console.log(data.whims[0].text)
+
+  // whimsArray.whims.forEach(whim => {
+  //   $('#display-title').html(whim.title)
+  //   $('#display-details').html(whim.text)
+  // })
+
+  // whimsArray.whims.forEach((whim) => {
+  //   let p = document.createElement('p')
+  //   p.textContent = whim.title
+  //   document.querySelector('#display-title-test').appendChild(p)
+  // //   let x = document.createElement('x')
+  // //   x.textContent = whim.text
+  // //   document.querySelector('#display-details-test').appendChild(x)
+  // })
+
+  whimsArray.whims.forEach((whim) => {
+    // let elements = ['LI', 'BUTTON']
+    // for (var i = 0; i < elements.length; i++) {
+    //   let p = document.createElement(elements[i]) }
+    let p = document.createElement('LI')
+    p.textContent = whim.title
+    document.querySelector('#whimListTitles').appendChild(p)
+    let e = document.createElement('BUTTON')
+    e.textContent = 'Edit Whim'
+    document.querySelector('#whimListTitles').appendChild(e)
+    let x = document.createElement('LI')
+    x.textContent = whim.text
+    document.querySelector('#whimListDetails').appendChild(x)
+    let b = document.createElement('BUTTON')
+    b.textContent = 'Delete Whim'
+    document.querySelector('#whimListDetails').appendChild(b)
+  })
+
+  // $('#display-title').text(data.whims[0].title)
+  // $('#display-details').text(data.whims[0].text)
 }
 
 let currentPlayer = 'X'
@@ -237,6 +290,7 @@ module.exports = {
   onNewGameSuccess,
   onGameHistorySuccess,
   oldGameBoardIDSuccess,
-  onNewWhimSuccess
+  onNewWhimSuccess,
+  onWhimIndexSuccess
   // newMoveSuccess
 }
