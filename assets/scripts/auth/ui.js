@@ -97,8 +97,10 @@ const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
   console.log('This is ui.js ' + newWhimTitle)
   console.log('This is ui.js ' + newWhimDetails)
   $('#message').text('New Whim Created!')
-
   $('#message').addClass('success')
+
+  $('#display-title').text(newWhimTitle)
+  $('#display-details').text(newWhimDetails)
 
   $('form').trigger('reset')
   $('#sign-up-btn').hide()
@@ -108,12 +110,12 @@ const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
   // $('#old-game').show()
   // $('#game-history').show()
 
-  setTimeout(() => {
-    // Clear the success message
-    $('#message').text('')
-    // Remove the class of 'success' from the element
-    $('#message').removeClass('success')
-  }, 2500)
+  // setTimeout(() => {
+  //   // Clear the success message
+  //   $('#message').text('')
+  //   // Remove the class of 'success' from the element
+  //   $('#message').removeClass('success')
+  // }, 2500)
 }
 
 let currentPlayer = 'X'
