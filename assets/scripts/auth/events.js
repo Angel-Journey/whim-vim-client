@@ -98,21 +98,46 @@ const onOldGameBoardID = function () {
     .catch(ui.onError)
 }
 
-const onNewMoveClick = function (event) {
+// const onNewMoveClick = function (event) {
+//   event.preventDefault()
+//
+//   // const cellIndex = $(event.target).data('cell-index')
+//   // // gamePlay.updateArray(cellIndex)
+//   //
+//   // console.log(cellIndex) // shows number of cell clicked
+//
+//   ui.newMoveSuccess(event)
+//
+//   //
+//   // api.newMove(cellIndex)
+//   //   // show success or failure
+//   //   .then(ui.newMoveSuccess)
+//   //   .catch(ui.onError)
+// }
+
+const onNewWhim = function (event) {
+  // prevent the defaul action of refreshing the page when a form is submitted
   event.preventDefault()
+  $('#newWhimModal').modal('toggle')
 
-  // const cellIndex = $(event.target).data('cell-index')
-  // // gamePlay.updateArray(cellIndex)
-  //
-  // console.log(cellIndex) // shows number of cell clicked
+  // event.target is our ''#sign-up' form so store it in a better named variable
+  const form = event.target
+  // get the data from our form
+  const formData = getFormFields(form)
 
-  ui.newMoveSuccess(event)
+  console.log(formData)
+  console.log(formData.newWhim.title) // shows New Whim Title
+  console.log(formData.newWhim.details) // shows New Whim Details
 
-  //
-  // api.newMove(cellIndex)
-  //   // show success or failure
-  //   .then(ui.newMoveSuccess)
-  //   .catch(ui.onError)
+  const newWhimTitle = formData.newWhim.title
+
+  const newWhimDetails = formData.newWhim.details
+
+  // make a request to API
+  api.newWhim(newWhimTitle, newWhimDetails)
+    // show success or failure
+    .then(ui.onNewWhimSuccess(newWhimTitle, newWhimDetails))
+    .catch(ui.onError)
 }
 
 module.exports = {
@@ -122,5 +147,6 @@ module.exports = {
   onNewGame,
   onGameHistory,
   onOldGameBoardID,
-  onNewMoveClick
+  onNewWhim
+  // onNewMoveClick
 }

@@ -28,5 +28,7 @@ $(() => {
 
   $('#old-game').on('click', authEvents.onOldGameBoardID)
 
-  $('.box').on('click', authEvents.onNewMoveClick)
+  // $('.box').on('click', authEvents.onNewMoveClick)
+
+  $('#new-whim-form').on('submit', authEvents.onNewWhim)
 })

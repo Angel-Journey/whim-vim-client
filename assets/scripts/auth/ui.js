@@ -30,8 +30,8 @@ const onSignUpSuccess = function () {
 
 const onSignInSuccess = function (response) {
   store.user = response.user
-  // console.log(store.user.value)
-  // console.log(store)
+  console.log(store.user)
+  console.log(store)
   $('#message').text(response.user.email + ' has successfully signed in!')
 
   $('#message').addClass('success')
@@ -89,6 +89,33 @@ const onError = function (err) {
     $('#game-message').removeClass('failure')
   }, 5000)
 }
+
+const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
+  // store.user = response.user
+  // console.log('Store user value is ' + store.user.value)
+  // console.log('Store value is ' + store)
+  console.log('This is ui.js ' + newWhimTitle)
+  console.log('This is ui.js ' + newWhimDetails)
+  $('#message').text('New Whim Created!')
+
+  $('#message').addClass('success')
+
+  $('form').trigger('reset')
+  $('#sign-up-btn').hide()
+  $('#sign-in-btn').hide()
+  $('#sign-out').show()
+  $('#new-game').show()
+  // $('#old-game').show()
+  // $('#game-history').show()
+
+  setTimeout(() => {
+    // Clear the success message
+    $('#message').text('')
+    // Remove the class of 'success' from the element
+    $('#message').removeClass('success')
+  }, 2500)
+}
+
 let currentPlayer = 'X'
 
 const onNewGameSuccess = function (data) {
@@ -134,71 +161,71 @@ const oldGameBoardIDSuccess = function (data) {
   // console.log(data)
 }
 
-const newMoveSuccess = function (event) {
-  // console.log(store.game.__v)
-  // console.log('New move button was clicked!')
-  //
-  // console.log(event)
-
-  const box = $(event.target)
-  box.css('background', 'transparent')
-  if (box.text() === '') {
-    box.text(currentPlayer)
-    currentPlayer = currentPlayer === 'O' ? 'X' : 'O'
-    $('#game-message').text(box.text() + ' has made their move!')
-    $('#game-message').addClass('success')
-    setTimeout(() => {
-      // Clear the game-message
-      $('#game-message').text('')
-      $('#game-message').removeClass('success')
-    }, 4000)
-  } else if (box.text() === 'O' || box.text() === 'X') {
-    $('#game-message').text('Foul! Please try again!')
-    $('#game-message').addClass('yellow')
-    setTimeout(() => {
-      // Clear the game-message
-      $('#game-message').text('')
-      $('#game-message').removeClass('yellow')
-    }, 2500)
-  }
-  const cellIndex = $(event.target).data('cell-index')
-  // console.log(cellIndex) // shows number of cell clicked
-  const value = (box.text())
-  // console.log(value) // shows which value ('X' or 'O') was entered
-  api.newMove(cellIndex, value)
-
-  store.game.cells[cellIndex] = value // assigns 'X' or 'O' to the array
-  // console.log(store.game.cells)
-  // console.log(store.game.cells.length)
-  if ((store.game.cells[0] === value && store.game.cells[1] === value && store.game.cells[2] === value) ||
-      (store.game.cells[3] === value && store.game.cells[4] === value && store.game.cells[5] === value) ||
-      (store.game.cells[6] === value && store.game.cells[7] === value && store.game.cells[8] === value) ||
-      (store.game.cells[0] === value && store.game.cells[3] === value && store.game.cells[6] === value) ||
-      (store.game.cells[1] === value && store.game.cells[4] === value && store.game.cells[7] === value) ||
-      (store.game.cells[2] === value && store.game.cells[5] === value && store.game.cells[8] === value) ||
-      (store.game.cells[0] === value && store.game.cells[4] === value && store.game.cells[8] === value) ||
-      (store.game.cells[2] === value && store.game.cells[4] === value && store.game.cells[6] === value)) {
-    // console.log(value + ' wins!')
-    $('#game-message').hide()
-    $('#win-message').text('Golazo! ' + value + ' wins!')
-    $('#win-message').addClass('winner')
-    // $('#game-Board').hide()
-    // $('.box').text('')
-    // $('.box').removeAttr('style')
-    // $('.box').off('click')
-    $('.box').css('pointer-events', 'none')
-    currentPlayer = 'X'
-  } else if ((store.game.cells[0] && store.game.cells[1] && store.game.cells[2] &&
-  store.game.cells[3] && store.game.cells[4] && store.game.cells[5] &&
-  store.game.cells[6] && store.game.cells[7] && store.game.cells[8]) !== '') {
-    // console.log('It is a draw!')
-    // $('#message').hide()
-    $('#win-message').text("It's a draw!")
-    $('#win-message').addClass('winner')
-    $('.box').css('pointer-events', 'none')
-    currentPlayer = 'X'
-  }
-}
+// const newMoveSuccess = function (event) {
+//   // console.log(store.game.__v)
+//   // console.log('New move button was clicked!')
+//   //
+//   // console.log(event)
+//
+//   const box = $(event.target)
+//   box.css('background', 'transparent')
+//   if (box.text() === '') {
+//     box.text(currentPlayer)
+//     currentPlayer = currentPlayer === 'O' ? 'X' : 'O'
+//     $('#game-message').text(box.text() + ' has made their move!')
+//     $('#game-message').addClass('success')
+//     setTimeout(() => {
+//       // Clear the game-message
+//       $('#game-message').text('')
+//       $('#game-message').removeClass('success')
+//     }, 4000)
+//   } else if (box.text() === 'O' || box.text() === 'X') {
+//     $('#game-message').text('Foul! Please try again!')
+//     $('#game-message').addClass('yellow')
+//     setTimeout(() => {
+//       // Clear the game-message
+//       $('#game-message').text('')
+//       $('#game-message').removeClass('yellow')
+//     }, 2500)
+//   }
+//   const cellIndex = $(event.target).data('cell-index')
+//   // console.log(cellIndex) // shows number of cell clicked
+//   const value = (box.text())
+//   // console.log(value) // shows which value ('X' or 'O') was entered
+//   api.newMove(cellIndex, value)
+//
+//   store.game.cells[cellIndex] = value // assigns 'X' or 'O' to the array
+//   // console.log(store.game.cells)
+//   // console.log(store.game.cells.length)
+//   if ((store.game.cells[0] === value && store.game.cells[1] === value && store.game.cells[2] === value) ||
+//       (store.game.cells[3] === value && store.game.cells[4] === value && store.game.cells[5] === value) ||
+//       (store.game.cells[6] === value && store.game.cells[7] === value && store.game.cells[8] === value) ||
+//       (store.game.cells[0] === value && store.game.cells[3] === value && store.game.cells[6] === value) ||
+//       (store.game.cells[1] === value && store.game.cells[4] === value && store.game.cells[7] === value) ||
+//       (store.game.cells[2] === value && store.game.cells[5] === value && store.game.cells[8] === value) ||
+//       (store.game.cells[0] === value && store.game.cells[4] === value && store.game.cells[8] === value) ||
+//       (store.game.cells[2] === value && store.game.cells[4] === value && store.game.cells[6] === value)) {
+//     // console.log(value + ' wins!')
+//     $('#game-message').hide()
+//     $('#win-message').text('Golazo! ' + value + ' wins!')
+//     $('#win-message').addClass('winner')
+//     // $('#game-Board').hide()
+//     // $('.box').text('')
+//     // $('.box').removeAttr('style')
+//     // $('.box').off('click')
+//     $('.box').css('pointer-events', 'none')
+//     currentPlayer = 'X'
+//   } else if ((store.game.cells[0] && store.game.cells[1] && store.game.cells[2] &&
+//   store.game.cells[3] && store.game.cells[4] && store.game.cells[5] &&
+//   store.game.cells[6] && store.game.cells[7] && store.game.cells[8]) !== '') {
+//     // console.log('It is a draw!')
+//     // $('#message').hide()
+//     $('#win-message').text("It's a draw!")
+//     $('#win-message').addClass('winner')
+//     $('.box').css('pointer-events', 'none')
+//     currentPlayer = 'X'
+//   }
+// }
 
 module.exports = {
   onSignUpSuccess,
@@ -208,5 +235,6 @@ module.exports = {
   onNewGameSuccess,
   onGameHistorySuccess,
   oldGameBoardIDSuccess,
-  newMoveSuccess
+  onNewWhimSuccess
+  // newMoveSuccess
 }
