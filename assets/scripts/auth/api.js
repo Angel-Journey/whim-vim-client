@@ -158,19 +158,18 @@ const deleteWhim = function (id) {
   })
 }
 
-const editWhim = function (id, newWhimDetails) {
+const editWhim = function (id, newWhimTitle, newWhimDetails) {
   return $.ajax({
     method: 'PATCH',
-    // asking to delete specified whim
+    // asking to update specified whim
     url: config.apiUrl + '/whims/' + id,
     headers: {
       Authorization: 'Bearer ' + store.user.token
     },
     data: {
       whim: {
-        // title: newWhimTitle,
+        title: newWhimTitle,
         text: newWhimDetails
-        // owner: store.user._id
       }
     }
   })

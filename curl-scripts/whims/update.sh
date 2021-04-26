@@ -15,6 +15,7 @@ curl "${API}${URL_PATH}/${ID}" \
   --header "Authorization: Bearer ${TOKEN}" \
   --data '{
     "whim": {
+      "title": "'"${TITLE}"'",
       "text": "'"${TEXT}"'"
     }
   }'

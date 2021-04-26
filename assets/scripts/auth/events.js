@@ -224,11 +224,13 @@ const onEditWhim = function (event) {
   console.log(formData.newWhim.details)
   const newWhimDetails = formData.newWhim.details
 
+  const newWhimTitle = formData.newWhim.title
+
   console.log(store.whimId)
   const id = store.whimId
 
   // make a request to API
-  api.editWhim(id, newWhimDetails)
+  api.editWhim(id, newWhimTitle, newWhimDetails)
     // show success or failure
     .then(ui.onWhimUpdateSuccess)
     .catch(ui.onError)
