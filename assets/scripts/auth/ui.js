@@ -196,11 +196,12 @@ const onWhimIndexSuccess = function (responseData) {
     let p = document.createElement('LI')
     p.textContent = whim.title
     document.querySelector('#whimListTitles').appendChild(p)
-    // finding the indexOf the (whim) from the array whimsArray.whims
+    // find the indexOf the (whim) from the array whimsArray.whims
     // p.value = whimsArray.whims.indexOf(whim)
 
     let e = document.createElement('BUTTON')
     e.textContent = 'Edit Whim'
+
     // e.id = 'edit_button'
     // e.setAttribute("id", "edit_button")
 
@@ -210,7 +211,10 @@ const onWhimIndexSuccess = function (responseData) {
     // e.value = findValue(whimsArray.whims)
     // console.log(e.value)
     // find the indexOf the (whim) from the array whimsArray.whims
-    e.value = whimsArray.whims.indexOf(whim)
+    e.value = whim._id
+    // e.className = 'edit_modal'
+    e.text = whim.text
+    e.title = whim.title
     document.querySelector('#whimListTitles').appendChild(e)
 
     let x = document.createElement('LI')
@@ -266,6 +270,21 @@ const onNewGameSuccess = function (data) {
   // $('#old-game').show()
   // console.log(store.game)
   // console.log(store.game._id) // shows game id
+}
+
+const onEditButtonClick = function (whimId, whimText, whimTitle) {
+  console.log('This is the id: ' + whimId)
+  console.log('This is the text: ' + whimText)
+  console.log('This is the title: ' + whimTitle)
+  $('#edit-whim-btn').show()
+  $('#editWhimModal.modal-title').text('Edit details, which is currently: ' + "'" + whimText + "'")
+  // $('#edit-whim-form').placeholder(whimText)
+  $('#edit-whim-form').on('submit', authEvents.onEditWhim)
+}
+
+const onWhimUpdateSuccess = function () {
+  $('#message').text('Whim updated! Click "Whim Index" again to show updated list.')
+  $('#message').addClass('success')
 }
 
 const onGameHistorySuccess = function (data) {
@@ -355,6 +374,8 @@ module.exports = {
   onNewWhimSuccess,
   onWhimIndexSuccess,
   onPasswordChangeSuccess,
-  onWhimDeleteSuccess
+  onWhimDeleteSuccess,
+  onEditButtonClick,
+  onWhimUpdateSuccess
   // newMoveSuccess
 }

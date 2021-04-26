@@ -17,6 +17,7 @@ $(() => {
   $('#old-game').hide()
   $('#new-whim-btn').hide()
   $('#display-all-whims').hide()
+  $('#edit-whim-btn').hide()
   // $('#new-whim').hide()
 
   $('#sign-up').on('submit', authEvents.onSignUp)
@@ -30,7 +31,9 @@ $(() => {
   // $('#edit_button').on('click', authEvents.onEditWhim)
   // $('#delete_button').on('click', authEvents.onDeleteWhim)
 
-  $('#whimListTitles').on('click', authEvents.onEditWhim)
+  $('#whimListTitles').on('click', authEvents.onEditButton)
+  $('#edit-whim-form').on('submit', authEvents.onEditWhim)
+
   $('#whimListDetails').on('click', authEvents.onDeleteWhim)
 
   $('#new-game').on('click', authEvents.onNewGame)

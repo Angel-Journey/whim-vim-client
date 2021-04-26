@@ -10,6 +10,8 @@ const ui = require('./ui')
 // import the getFormFields function
 const getFormFields = require('../../../lib/get-form-fields')
 
+const store = require('../store') // will store user info (from onSignInSuccess)
+
 // const gamePlay = require('./gamePlay')
 
 // const store = require('../store')
@@ -172,19 +174,64 @@ const onWhimIndex = function (event) {
     .catch(ui.onError)
 }
 
-const onEditWhim = function (event) {
+store.whimId = 0
+
+const onEditButton = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
   event.preventDefault()
 
   console.log(event)
   console.log('test edit')
+
+  console.log($('#whimListTitles'))
+
   console.log(event.target.value)
+  console.log(event.target.title)
+  console.log(event.target.text)
+
+  const whimId = event.target.value
+  const whimText = event.target.text
+  const whimTitle = event.target.title
+  store.whimId = whimId
+
+  ui.onEditButtonClick(whimId, whimText, whimTitle)
+
+  // const newWhimDetails = formData.newWhim.details
+  // console.log(newWhimDetails)
 
   // // make a request to API
-  // api.whimIndex()
+  // api.whimIndex(id, newWhimDetails)
   //   // show success or failure
   //   .then(ui.onWhimIndexSuccess)
   //   .catch(ui.onError)
+}
+
+const onEditWhim = function (event) {
+  // prevent the defaul action of refreshing the page when a form is submitted
+  event.preventDefault()
+
+  console.log(event)
+  console.log('test editWhim')
+  // console.log(whimId)
+  // console.log(event.target.value)
+
+  $('#editWhimModal').modal('toggle')
+
+  // event.target is our ''#new-whim' form so store it in a better named variable
+  const form = event.target
+  // get the data from our form
+  const formData = getFormFields(form)
+  console.log(formData.newWhim.details)
+  const newWhimDetails = formData.newWhim.details
+
+  console.log(store.whimId)
+  const id = store.whimId
+
+  // make a request to API
+  api.editWhim(id, newWhimDetails)
+    // show success or failure
+    .then(ui.onWhimUpdateSuccess)
+    .catch(ui.onError)
 }
 
 const onDeleteWhim = function (event) {
@@ -214,6 +261,7 @@ module.exports = {
   onNewWhim,
   onWhimIndex,
   onChangePassword,
+  onEditButton,
   onEditWhim,
   onDeleteWhim
   // onNewMoveClick

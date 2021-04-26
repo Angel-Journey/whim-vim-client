@@ -122,7 +122,7 @@
               <form id="change-password">
                 <!-- <input name="credentials[email]" type="email" placeholder="Enter email here" required> -->
                 <input name="passwords[old]" type="password" placeholder="Old password here" required>
-                <input name="passwords[new]" type="password" placeholder="new password here" required>
+                <input name="passwords[new]" type="password" placeholder="New password here" required>
                 <input type="submit" value="Change Password"/>
                 <!-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#signUpModal">
                   Sign Up
@@ -179,6 +179,9 @@
               <form id="new-whim-form">
                 <input name="newWhim[title]" type="text" placeholder="Enter title here" required>
                 <input name="newWhim[details]" type="text" placeholder="Enter details here" required>
+                  <!-- <div class="mb-3">
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                  </div> -->
                 <input type="submit" value="Save Whim"/>
               </form>
 
@@ -220,6 +223,37 @@
   <ul id="whimListTitles">
     <li></li>
   </ul>
+
+  <div>
+  <!-- New Whim Button trigger modal -->
+    <button type="button" id="edit-whim-btn" class="btn btn-success edit-button" data-toggle="modal" data-target="#editWhimModal">
+      EDIT WHIM TEST
+    </button>
+
+  <!-- Edit Whim Modal -->
+  <div class="modal fade" id="editWhimModal" tabindex="-1" role="dialog" aria-labelledby="editWhimModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editWhimModal">Edit Whim</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <!-- Edit Whim Form -->
+          <form id="edit-whim-form">
+            <!-- <input name="newWhim[title]" type="text" placeholder="Enter title here" required> -->
+            <input name="newWhim[details]" type="text" placeholder="New details here" required>
+            <input type="submit" value="Update Whim"/>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
   <ul id="whimListDetails">
     <li></li>

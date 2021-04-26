@@ -158,6 +158,24 @@ const deleteWhim = function (id) {
   })
 }
 
+const editWhim = function (id, newWhimDetails) {
+  return $.ajax({
+    method: 'PATCH',
+    // asking to delete specified whim
+    url: config.apiUrl + '/whims/' + id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: {
+      whim: {
+        // title: newWhimTitle,
+        text: newWhimDetails
+        // owner: store.user._id
+      }
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -169,6 +187,7 @@ module.exports = {
   newWhim,
   whimIndex,
   changePassword,
-  deleteWhim
+  deleteWhim,
+  editWhim
   // whimsArray
 }
