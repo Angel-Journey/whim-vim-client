@@ -91,6 +91,7 @@ const onSignOutSuccess = function () {
   $('#change-pw-btn').hide()
   $('#new-whim-btn').hide()
   $('#display-all-whims').hide()
+  $('#edit-whim-btn').hide()
   store.user = null
 
   setTimeout(() => {
