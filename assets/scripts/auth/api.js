@@ -17,6 +17,19 @@ const signUp = function (formData) {
   })
 }
 
+const changePassword = function (formData) {
+  return $.ajax({
+    method: 'PATCH',
+    // sending info for the single user we want to create
+    url: config.apiUrl + '/change-password',
+    // send the formData
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: formData
+  })
+}
+
 const signIn = function (formData) {
   return $.ajax({
     method: 'POST',
@@ -143,6 +156,7 @@ module.exports = {
   oldGameBoardID,
   // newMove,
   newWhim,
-  whimIndex
+  whimIndex,
+  changePassword
   // whimsArray
 }

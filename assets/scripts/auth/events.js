@@ -33,6 +33,25 @@ const onSignUp = function (event) {
     .catch(ui.onError)
 }
 
+const onChangePassword = function (event) {
+  // prevent the defaul action of refreshing the page when a form is submitted
+  event.preventDefault()
+  $('#changePwModal').modal('toggle')
+
+  // event.target is our '#change-password' form so store it in a better named variable
+  const form = event.target
+  // get the data from our form
+  const formData = getFormFields(form)
+
+  // console.log(formData)
+
+  // make a request to submit change-password form data to API
+  api.changePassword(formData)
+    // show success or failure
+    .then(ui.onPasswordChangeSuccess)
+    .catch(ui.onError)
+}
+
 const onSignIn = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
   event.preventDefault()
@@ -161,6 +180,7 @@ module.exports = {
   onGameHistory,
   onOldGameBoardID,
   onNewWhim,
-  onWhimIndex
+  onWhimIndex,
+  onChangePassword
   // onNewMoveClick
 }

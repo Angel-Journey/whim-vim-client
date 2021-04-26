@@ -7,6 +7,28 @@ const api = require('./api')
 
 // const gamePlay = require('./gamePlay')
 
+const onPasswordChangeSuccess = function () {
+  $('#message').text('Success! Your password has been changed.')
+
+  $('#message').addClass('success')
+
+  $('form').trigger('reset')
+  $('#sign-out').show()
+  $('#new-game').hide()
+  $('#old-game').hide()
+  $('#game-history').hide()
+  $('#sign-up-btn').hide()
+  $('#sign-in-btn').hide()
+  $('#change-pw-btn').show()
+
+  setTimeout(() => {
+    // Clear the success message
+    $('#message').text('')
+    // Remove the class of 'success' from the element
+    $('#message').removeClass('success')
+  }, 5000)
+}
+
 const onSignUpSuccess = function () {
   $('#message').text('Success! Thank you for joinging Whim Vim!')
 
@@ -19,6 +41,7 @@ const onSignUpSuccess = function () {
   $('#game-history').hide()
   $('#sign-up-btn').hide()
   $('#sign-in-btn').show()
+  $('#change-pw-btn').show()
 
   setTimeout(() => {
     // Clear the success message
@@ -41,6 +64,11 @@ const onSignInSuccess = function (response) {
   $('#sign-in-btn').hide()
   $('#sign-out').show()
   $('#new-game').show()
+  $('#change-pw-btn').show()
+  $('#whimListTitles').text('')
+  $('#whimListDetails').text('')
+  $('#whimListTitles').show()
+  $('#whimListDetails').show()
   // $('#old-game').show()
   // $('#game-history').show()
 
@@ -64,6 +92,9 @@ const onSignOutSuccess = function () {
   $('#sign-in-btn').show()
   $('#sign-up-btn').show()
   $('#win-message').hide()
+  $('#whimListTitles').hide()
+  $('#whimListDetails').hide()
+  $('#change-pw-btn').hide()
   store.user = null
 
   setTimeout(() => {
@@ -291,6 +322,7 @@ module.exports = {
   onGameHistorySuccess,
   oldGameBoardIDSuccess,
   onNewWhimSuccess,
-  onWhimIndexSuccess
+  onWhimIndexSuccess,
+  onPasswordChangeSuccess
   // newMoveSuccess
 }
