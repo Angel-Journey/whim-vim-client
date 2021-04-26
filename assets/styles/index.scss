@@ -273,10 +273,24 @@ ul {
 //   user-select: none;
 // }
 
+.deleteButton {
+  color: red;
+  background: yellow;
+  // opacity: .80;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.editButton {
+  background: #fea02f;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
 .modal {
     position: fixed;
     top: 10%;
-    padding: 30px 40px;
+    padding: 40px 50px;
     border-radius: 8px;
     background-color: white;
     z-index: 60000;

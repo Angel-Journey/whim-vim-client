@@ -104,7 +104,7 @@ const onSignOutSuccess = function () {
 const onError = function (err) {
   // log any errors that occur
   console.error(err)
-  $('#game-message').text('Red card! Sorry, please try again.')
+  $('#game-message').text('Sorry, please try again.')
   $('#game-message').addClass('failure')
 
   $('form').trigger('reset')
@@ -149,8 +149,9 @@ const onWhimIndexSuccess = function (responseData) {
   // console.log('This is the index list ' + whimsArray)
   $('#sign-up-btn').hide()
   $('#sign-in-btn').hide()
+  $('#edit-whim-btn').hide()
   $('#sign-out').show()
-  $('#whimListTitles').text('Titles:')
+  $('#whimListTitles').text('Whim Title:')
   $('#whimListDetails').text('Details:')
   $('#listBox').show()
   $('#message').text('')
@@ -204,6 +205,7 @@ const onWhimIndexSuccess = function (responseData) {
     // e.className = 'edit_modal'
     e.text = whim.text
     e.title = whim.title
+    e.setAttribute('class', 'editButton')
     document.querySelector('#whimListTitles').appendChild(e)
 
     let x = document.createElement('LI')
@@ -214,9 +216,9 @@ const onWhimIndexSuccess = function (responseData) {
     b.textContent = 'Delete Whim'
     // b.id = 'delete_button'
     b.value = whim._id
+    b.setAttribute('class', 'deleteButton')
     document.querySelector('#whimListDetails').appendChild(b)
   })
-
   // $('#display-title').text(data.whims[0].title)
   // $('#display-details').text(data.whims[0].text)
 }
@@ -245,7 +247,9 @@ const onEditButtonClick = function (whimId, whimText, whimTitle) {
 const onWhimUpdateSuccess = function () {
   $('#message').text('Whim updated! Click "Whim Index" again to show updated list.')
   $('#message').addClass('success')
+  $('#edit-whim-btn').hide()
 }
+
 module.exports = {
   onSignUpSuccess,
   onError,
