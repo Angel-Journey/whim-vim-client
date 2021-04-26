@@ -4,6 +4,7 @@ const store = require('../store') // will store user info (from onSignInSuccess)
 
 // import the functions that make requests to the api
 const api = require('./api')
+const authEvents = require('./events')
 
 // const gamePlay = require('./gamePlay')
 
@@ -41,7 +42,9 @@ const onSignUpSuccess = function () {
   $('#game-history').hide()
   $('#sign-up-btn').hide()
   $('#sign-in-btn').show()
-  $('#change-pw-btn').show()
+  $('#change-pw-btn').hide()
+  $('#new-whim-btn').hide()
+  $('#display-all-whims').hide()
 
   setTimeout(() => {
     // Clear the success message
@@ -69,6 +72,8 @@ const onSignInSuccess = function (response) {
   $('#whimListDetails').text('')
   $('#whimListTitles').show()
   $('#whimListDetails').show()
+  $('#new-whim-btn').show()
+  $('#display-all-whims').show()
   // $('#old-game').show()
   // $('#game-history').show()
 
@@ -95,6 +100,8 @@ const onSignOutSuccess = function () {
   $('#whimListTitles').hide()
   $('#whimListDetails').hide()
   $('#change-pw-btn').hide()
+  $('#new-whim-btn').hide()
+  $('#display-all-whims').hide()
   store.user = null
 
   setTimeout(() => {
@@ -134,8 +141,8 @@ const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
   $('#message').text('New Whim Created!')
   $('#message').addClass('success')
 
-  $('#display-title').text(newWhimTitle)
-  $('#display-details').text(newWhimDetails)
+  $('#display-title').text('Title: ' + newWhimTitle)
+  $('#display-details').text('Details: ' + newWhimDetails)
 
   $('form').trigger('reset')
   $('#sign-up-btn').hide()
@@ -158,6 +165,8 @@ const onWhimIndexSuccess = function (responseData) {
   $('#sign-up-btn').hide()
   $('#sign-in-btn').hide()
   $('#sign-out').show()
+  $('#whimListTitles').text('Titles:')
+  $('#whimListDetails').text('Details:')
   const whimsArray = responseData
   console.log(whimsArray)
   console.log(whimsArray.whims)
@@ -187,19 +196,41 @@ const onWhimIndexSuccess = function (responseData) {
     let p = document.createElement('LI')
     p.textContent = whim.title
     document.querySelector('#whimListTitles').appendChild(p)
+    // finding the indexOf the (whim) from the array whimsArray.whims
+    // p.value = whimsArray.whims.indexOf(whim)
+
     let e = document.createElement('BUTTON')
     e.textContent = 'Edit Whim'
+    // e.id = 'edit_button'
+    // e.setAttribute("id", "edit_button")
+
+    // function findValue (array) {
+    //   return array.indexOf(whim.text)
+    // }
+    // e.value = findValue(whimsArray.whims)
+    // console.log(e.value)
+    // find the indexOf the (whim) from the array whimsArray.whims
+    e.value = whimsArray.whims.indexOf(whim)
     document.querySelector('#whimListTitles').appendChild(e)
+
     let x = document.createElement('LI')
     x.textContent = whim.text
     document.querySelector('#whimListDetails').appendChild(x)
+
     let b = document.createElement('BUTTON')
     b.textContent = 'Delete Whim'
+    // b.id = 'delete_button'
+    b.value = whim._id
     document.querySelector('#whimListDetails').appendChild(b)
   })
 
   // $('#display-title').text(data.whims[0].title)
   // $('#display-details').text(data.whims[0].text)
+}
+
+const onWhimDeleteSuccess = function () {
+  $('#message').text('Whim deleted! Click "Whim Index" again to show updated list.')
+  $('#message').addClass('success')
 }
 
 let currentPlayer = 'X'
@@ -323,6 +354,7 @@ module.exports = {
   oldGameBoardIDSuccess,
   onNewWhimSuccess,
   onWhimIndexSuccess,
-  onPasswordChangeSuccess
+  onPasswordChangeSuccess,
+  onWhimDeleteSuccess
   // newMoveSuccess
 }

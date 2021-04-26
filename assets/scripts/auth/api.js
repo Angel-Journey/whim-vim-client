@@ -147,6 +147,17 @@ const oldGameBoardID = function () {
 //   })
 // }
 
+const deleteWhim = function (id) {
+  return $.ajax({
+    method: 'DELETE',
+    // asking to delete specified whim
+    url: config.apiUrl + '/whims/' + id,
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -157,6 +168,7 @@ module.exports = {
   // newMove,
   newWhim,
   whimIndex,
-  changePassword
+  changePassword,
+  deleteWhim
   // whimsArray
 }

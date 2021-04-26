@@ -172,6 +172,38 @@ const onWhimIndex = function (event) {
     .catch(ui.onError)
 }
 
+const onEditWhim = function (event) {
+  // prevent the defaul action of refreshing the page when a form is submitted
+  event.preventDefault()
+
+  console.log(event)
+  console.log('test edit')
+  console.log(event.target.value)
+
+  // // make a request to API
+  // api.whimIndex()
+  //   // show success or failure
+  //   .then(ui.onWhimIndexSuccess)
+  //   .catch(ui.onError)
+}
+
+const onDeleteWhim = function (event) {
+  // prevent the defaul action of refreshing the page when a form is submitted
+  event.preventDefault()
+
+  console.log(event)
+  console.log('test delete')
+  console.log(event.target.value)
+
+  const id = event.target.value
+
+  // // make a request to API
+  api.deleteWhim(id)
+  //   // show success or failure
+    .then(ui.onWhimDeleteSuccess)
+    .catch(ui.onError)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
@@ -181,6 +213,8 @@ module.exports = {
   onOldGameBoardID,
   onNewWhim,
   onWhimIndex,
-  onChangePassword
+  onChangePassword,
+  onEditWhim,
+  onDeleteWhim
   // onNewMoveClick
 }
