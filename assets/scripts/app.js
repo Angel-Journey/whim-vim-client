@@ -18,6 +18,7 @@ $(() => {
   $('#new-whim-btn').hide()
   $('#display-all-whims').hide()
   $('#edit-whim-btn').hide()
+  $('#listBox').hide()
   // $('#new-whim').hide()
 
   $('#sign-up').on('submit', authEvents.onSignUp)

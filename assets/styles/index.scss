@@ -71,7 +71,17 @@ h2, h3, h4, h5, p {
     // background: url('https://image.shutterstock.com/image-illustration/old-black-background-distressed-vintage-260nw-1607779117.jpg');
     // background: url('https://images.unsplash.com/photo-1524664399170-77e7118fdb6d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
     background-color: #003f5a;
-    padding: 0px 25px 0px 0px;
+    padding: 0px 15px 0px 0px;
+}
+
+.nav_buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // background: url('https://image.shutterstock.com/image-illustration/old-black-background-distressed-vintage-260nw-1607779117.jpg');
+    // background: url('https://images.unsplash.com/photo-1524664399170-77e7118fdb6d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+    background-color: #fea02f;
+    padding: 0px 0px 0px 0px;
 }
 
 .winner {
@@ -112,10 +122,35 @@ h2, h3, h4, h5, p {
   // justify-content: center;
   // display: flex;
   // align-items: center;
+  // border: 1px solid blue;
+
+//   position: relative;
+// margin: 1em;
+// overflow: hidden;
+}
+
+li:not(:last-child) {
+    padding-top: 20px;
+    padding-bottom: 10px;
+    list-style-position: inside;
+
+//     flex-grow: 1;
+// flex-basis: auto;
+// margin: .25em 0;
+// padding: 0 1em;
+// text-align: center;
 }
 
 ul {
     list-style-type: none;
+    border: 1px solid #fea02f;
+    list-style-position: inside;
+
+//     display: flex;
+// flex-direction: row;
+// flex-wrap: wrap;
+// justify-content: space-between;
+// margin-left: -1px;
 }
 
 // .board {
@@ -241,7 +276,7 @@ ul {
 .modal {
     position: fixed;
     top: 10%;
-    padding: 40px 50px;
+    padding: 30px 40px;
     border-radius: 8px;
     background-color: white;
     z-index: 60000;
@@ -250,10 +285,10 @@ ul {
     display: none;
     left: 50%;
     margin-left: -200px;
-    max-height: 80%;
+    max-height: 50%;
     box-sizing: border-box;
 }
 
-    .modal.on {
-        display: block;
-    }
+    // .modal.on {
+    //     display: block;
+    // }

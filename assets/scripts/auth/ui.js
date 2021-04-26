@@ -6,8 +6,6 @@ const store = require('../store') // will store user info (from onSignInSuccess)
 const api = require('./api')
 const authEvents = require('./events')
 
-// const gamePlay = require('./gamePlay')
-
 const onPasswordChangeSuccess = function () {
   $('#message').text('Success! Your password has been changed.')
 
@@ -37,9 +35,6 @@ const onSignUpSuccess = function () {
 
   $('form').trigger('reset')
   $('#sign-out').hide()
-  $('#new-game').hide()
-  $('#old-game').hide()
-  $('#game-history').hide()
   $('#sign-up-btn').hide()
   $('#sign-in-btn').show()
   $('#change-pw-btn').hide()
@@ -66,7 +61,6 @@ const onSignInSuccess = function (response) {
   $('#sign-up-btn').hide()
   $('#sign-in-btn').hide()
   $('#sign-out').show()
-  $('#new-game').show()
   $('#change-pw-btn').show()
   $('#whimListTitles').text('')
   $('#whimListDetails').text('')
@@ -90,13 +84,8 @@ const onSignOutSuccess = function () {
 
   $('#message').addClass('success')
   $('#sign-out').hide()
-  $('#new-game').hide()
-  $('#old-game').hide()
-  $('#game-history').hide()
-  $('#game-Board').hide()
   $('#sign-in-btn').show()
   $('#sign-up-btn').show()
-  $('#win-message').hide()
   $('#whimListTitles').hide()
   $('#whimListDetails').hide()
   $('#change-pw-btn').hide()
@@ -128,7 +117,8 @@ const onError = function (err) {
   }, 5000)
 }
 
-store.whims = ''
+// store.whims = ''
+// store.array = []
 
 const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
   // store.user = response.user
@@ -138,7 +128,7 @@ const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
   console.log('This is ui.js ' + newWhimDetails)
   store.whims = newWhimTitle + ' : ' + newWhimDetails
   console.log(store.whims)
-  $('#message').text('New Whim Created!')
+  $('#message').text('New Whim Created! Click "Whim Index" to view updated list')
   $('#message').addClass('success')
 
   $('#display-title').text('Title: ' + newWhimTitle)
@@ -151,14 +141,9 @@ const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
   $('#new-game').show()
   // $('#old-game').show()
   // $('#game-history').show()
-
-  // setTimeout(() => {
-  //   // Clear the success message
-  //   $('#message').text('')
-  //   // Remove the class of 'success' from the element
-  //   $('#message').removeClass('success')
-  // }, 2500)
 }
+
+store.Array = []
 
 const onWhimIndexSuccess = function (responseData) {
   // console.log('This is the index list ' + whimsArray)
@@ -167,6 +152,8 @@ const onWhimIndexSuccess = function (responseData) {
   $('#sign-out').show()
   $('#whimListTitles').text('Titles:')
   $('#whimListDetails').text('Details:')
+  $('#listBox').show()
+  $('#message').text('')
   const whimsArray = responseData
   console.log(whimsArray)
   console.log(whimsArray.whims)
@@ -188,6 +175,8 @@ const onWhimIndexSuccess = function (responseData) {
   // //   x.textContent = whim.text
   // //   document.querySelector('#display-details-test').appendChild(x)
   // })
+  store.Array = whimsArray.whims
+  console.log(store.Array)
 
   whimsArray.whims.forEach((whim) => {
     // let elements = ['LI', 'BUTTON']
@@ -235,41 +224,12 @@ const onWhimIndexSuccess = function (responseData) {
 const onWhimDeleteSuccess = function () {
   $('#message').text('Whim deleted! Click "Whim Index" again to show updated list.')
   $('#message').addClass('success')
-}
-
-let currentPlayer = 'X'
-
-const onNewGameSuccess = function (data) {
-  $('#game-message').show()
-  $('#game-message').text('Game on! Player X kicks off!')
-  $('#game-message').addClass('success')
-  setTimeout(() => {
-    // Clear the game-message
-    $('#game-message').text('')
-    $('#game-message').removeClass('success')
-  }, 3000)
-  currentPlayer = 'X'
-  store.game = data.game
-  // console.log('New Game button was clicked!')
-  // console.log(data.game)
-  $('#game-Board').show()
-  $('#win-message').text('')
-  $('.box').text('')
-  $('.box').removeAttr('style')
-  $('.box').on('click')
-  store.game.cells[0] = ''
-  store.game.cells[1] = ''
-  store.game.cells[2] = ''
-  store.game.cells[3] = ''
-  store.game.cells[4] = ''
-  store.game.cells[5] = ''
-  store.game.cells[6] = ''
-  store.game.cells[7] = ''
-  store.game.cells[8] = ''
-  // $('#game-history').show()
-  // $('#old-game').show()
-  // console.log(store.game)
-  // console.log(store.game._id) // shows game id
+  // setTimeout(() => {
+  //   // Clear the success message
+  //   $('#message').text('')
+  //   // Remove the class of 'success' from the element
+  //   $('#message').removeClass('success')
+  // }, 4000)
 }
 
 const onEditButtonClick = function (whimId, whimText, whimTitle) {
@@ -286,96 +246,15 @@ const onWhimUpdateSuccess = function () {
   $('#message').text('Whim updated! Click "Whim Index" again to show updated list.')
   $('#message').addClass('success')
 }
-
-const onGameHistorySuccess = function (data) {
-  // console.log('Game History button was clicked!')
-  // console.log(data)
-}
-
-const oldGameBoardIDSuccess = function (data) {
-  // console.log('Old Game button was clicked!')
-  // console.log(data)
-}
-
-// const newMoveSuccess = function (event) {
-//   // console.log(store.game.__v)
-//   // console.log('New move button was clicked!')
-//   //
-//   // console.log(event)
-//
-//   const box = $(event.target)
-//   box.css('background', 'transparent')
-//   if (box.text() === '') {
-//     box.text(currentPlayer)
-//     currentPlayer = currentPlayer === 'O' ? 'X' : 'O'
-//     $('#game-message').text(box.text() + ' has made their move!')
-//     $('#game-message').addClass('success')
-//     setTimeout(() => {
-//       // Clear the game-message
-//       $('#game-message').text('')
-//       $('#game-message').removeClass('success')
-//     }, 4000)
-//   } else if (box.text() === 'O' || box.text() === 'X') {
-//     $('#game-message').text('Foul! Please try again!')
-//     $('#game-message').addClass('yellow')
-//     setTimeout(() => {
-//       // Clear the game-message
-//       $('#game-message').text('')
-//       $('#game-message').removeClass('yellow')
-//     }, 2500)
-//   }
-//   const cellIndex = $(event.target).data('cell-index')
-//   // console.log(cellIndex) // shows number of cell clicked
-//   const value = (box.text())
-//   // console.log(value) // shows which value ('X' or 'O') was entered
-//   api.newMove(cellIndex, value)
-//
-//   store.game.cells[cellIndex] = value // assigns 'X' or 'O' to the array
-//   // console.log(store.game.cells)
-//   // console.log(store.game.cells.length)
-//   if ((store.game.cells[0] === value && store.game.cells[1] === value && store.game.cells[2] === value) ||
-//       (store.game.cells[3] === value && store.game.cells[4] === value && store.game.cells[5] === value) ||
-//       (store.game.cells[6] === value && store.game.cells[7] === value && store.game.cells[8] === value) ||
-//       (store.game.cells[0] === value && store.game.cells[3] === value && store.game.cells[6] === value) ||
-//       (store.game.cells[1] === value && store.game.cells[4] === value && store.game.cells[7] === value) ||
-//       (store.game.cells[2] === value && store.game.cells[5] === value && store.game.cells[8] === value) ||
-//       (store.game.cells[0] === value && store.game.cells[4] === value && store.game.cells[8] === value) ||
-//       (store.game.cells[2] === value && store.game.cells[4] === value && store.game.cells[6] === value)) {
-//     // console.log(value + ' wins!')
-//     $('#game-message').hide()
-//     $('#win-message').text('Golazo! ' + value + ' wins!')
-//     $('#win-message').addClass('winner')
-//     // $('#game-Board').hide()
-//     // $('.box').text('')
-//     // $('.box').removeAttr('style')
-//     // $('.box').off('click')
-//     $('.box').css('pointer-events', 'none')
-//     currentPlayer = 'X'
-//   } else if ((store.game.cells[0] && store.game.cells[1] && store.game.cells[2] &&
-//   store.game.cells[3] && store.game.cells[4] && store.game.cells[5] &&
-//   store.game.cells[6] && store.game.cells[7] && store.game.cells[8]) !== '') {
-//     // console.log('It is a draw!')
-//     // $('#message').hide()
-//     $('#win-message').text("It's a draw!")
-//     $('#win-message').addClass('winner')
-//     $('.box').css('pointer-events', 'none')
-//     currentPlayer = 'X'
-//   }
-// }
-
 module.exports = {
   onSignUpSuccess,
   onError,
   onSignInSuccess,
   onSignOutSuccess,
-  onNewGameSuccess,
-  onGameHistorySuccess,
-  oldGameBoardIDSuccess,
   onNewWhimSuccess,
   onWhimIndexSuccess,
   onPasswordChangeSuccess,
   onWhimDeleteSuccess,
   onEditButtonClick,
   onWhimUpdateSuccess
-  // newMoveSuccess
 }

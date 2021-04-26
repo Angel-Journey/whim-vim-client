@@ -12,10 +12,6 @@ const getFormFields = require('../../../lib/get-form-fields')
 
 const store = require('../store') // will store user info (from onSignInSuccess)
 
-// const gamePlay = require('./gamePlay')
-
-// const store = require('../store')
-
 const onSignUp = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
   event.preventDefault()
@@ -83,58 +79,6 @@ const onSignOut = function (event) {
     .then(ui.onSignOutSuccess)
     .catch(ui.onError)
 }
-
-const onNewGame = function (event) {
-  // prevent the default action of refreshing the page when a form is submitted
-  event.preventDefault()
-
-  // make a request to API
-  api.newGame()
-    // show success or failure
-    .then(ui.onNewGameSuccess)
-    .catch(ui.onError)
-}
-
-const onGameHistory = function (event) {
-  // prevent the default action of refreshing the page when a form is submitted
-  event.preventDefault()
-
-  // make a request to API
-  api.newGameHistory()
-    // show success or failure
-    .then(ui.onGameHistorySuccess)
-    .catch(ui.onError)
-}
-
-const onOldGameBoardID = function () {
-  // prevent the default action of refreshing the page when a form is submitted
-  event.preventDefault()
-
-  // event.target is our 'clicked cell' form so store it in a better named variable
-
-  // make a request to API
-  api.oldGameBoardID()
-    // show success or failure
-    .then(ui.oldGameBoardIDSuccess)
-    .catch(ui.onError)
-}
-
-// const onNewMoveClick = function (event) {
-//   event.preventDefault()
-//
-//   // const cellIndex = $(event.target).data('cell-index')
-//   // // gamePlay.updateArray(cellIndex)
-//   //
-//   // console.log(cellIndex) // shows number of cell clicked
-//
-//   ui.newMoveSuccess(event)
-//
-//   //
-//   // api.newMove(cellIndex)
-//   //   // show success or failure
-//   //   .then(ui.newMoveSuccess)
-//   //   .catch(ui.onError)
-// }
 
 const onNewWhim = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
@@ -257,14 +201,10 @@ module.exports = {
   onSignUp,
   onSignIn,
   onSignOut,
-  onNewGame,
-  onGameHistory,
-  onOldGameBoardID,
   onNewWhim,
   onWhimIndex,
   onChangePassword,
   onEditButton,
   onEditWhim,
   onDeleteWhim
-  // onNewMoveClick
 }

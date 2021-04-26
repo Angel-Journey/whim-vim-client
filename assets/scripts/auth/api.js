@@ -53,18 +53,6 @@ const signOut = function () {
   })
 }
 
-const newGame = function (gameData) {
-  return $.ajax({
-    method: 'POST',
-    // asking for new game
-    url: config.apiUrl + '/games',
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    },
-    data: gameData
-  })
-}
-
 const newWhim = function (newWhimTitle, newWhimDetails) {
   return $.ajax({
     method: 'POST',
@@ -103,50 +91,6 @@ const whimIndex = function () {
   })
 }
 
-const newGameHistory = function (gameData) {
-  return $.ajax({
-    method: 'GET',
-    // asking for new game board
-    url: config.apiUrl + '/games',
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    },
-    data: gameData
-  })
-}
-
-const oldGameBoardID = function () {
-  return $.ajax({
-    method: 'GET',
-    // asking for old game board
-    url: config.apiUrl + '/games/:id',
-    headers: {
-      Authorization: 'Bearer ' + store.user.token
-    }
-  })
-}
-// store.game.id
-
-// const newMove = function (cellIndex, value) {
-//   return $.ajax({
-//     method: 'PATCH',
-//     // asking to update game
-//     url: config.apiUrl + '/games/' + store.game._id,
-//     headers: {
-//       Authorization: 'Bearer ' + store.user.token
-//     },
-//     data: {
-//       game: {
-//         cell: {
-//           index: cellIndex,
-//           value: value
-//         },
-//         over: false
-//       }
-//     }
-//   })
-// }
-
 const deleteWhim = function (id) {
   return $.ajax({
     method: 'DELETE',
@@ -179,14 +123,9 @@ module.exports = {
   signUp,
   signIn,
   signOut,
-  newGame,
-  newGameHistory,
-  oldGameBoardID,
-  // newMove,
   newWhim,
   whimIndex,
   changePassword,
   deleteWhim,
   editWhim
-  // whimsArray
 }
