@@ -248,6 +248,7 @@ const onWhimUpdateSuccess = function () {
   $('#message').text('Whim updated! Click "Whim Index" again to show updated list.')
   $('#message').addClass('success')
   $('#edit-whim-btn').hide()
+  $('form').trigger('reset')
 }
 
 module.exports = {

@@ -118,7 +118,7 @@ const onWhimIndex = function (event) {
     .catch(ui.onError)
 }
 
-store.whimId = 0
+// store.whimId = 0
 
 const onEditButton = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
