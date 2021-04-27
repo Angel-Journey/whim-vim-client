@@ -35,7 +35,6 @@ const onSignUpSuccess = function () {
 
   $('form').trigger('reset')
   $('#sign-out').hide()
-  $('#sign-up-btn').hide()
   $('#sign-in-btn').show()
   $('#change-pw-btn').hide()
   $('#new-whim-btn').hide()
