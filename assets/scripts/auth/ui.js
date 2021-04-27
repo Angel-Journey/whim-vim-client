@@ -29,7 +29,7 @@ const onPasswordChangeSuccess = function () {
 }
 
 const onSignUpSuccess = function () {
-  $('#message').text('Success! Thank you for joinging Whim Vim!')
+  $('#message').text('Success! Thank you for joining Whim Vim! Please sign in to start creating Whims!')
 
   $('#message').addClass('success')
 
@@ -41,12 +41,12 @@ const onSignUpSuccess = function () {
   $('#new-whim-btn').hide()
   $('#display-all-whims').hide()
 
-  setTimeout(() => {
-    // Clear the success message
-    $('#message').text('')
-    // Remove the class of 'success' from the element
-    $('#message').removeClass('success')
-  }, 5000)
+  // setTimeout(() => {
+  //   // Clear the success message
+  //   $('#message').text('')
+  //   // Remove the class of 'success' from the element
+  //   $('#message').removeClass('success')
+  // }, 5000)
 }
 
 const onSignInSuccess = function (response) {
@@ -68,6 +68,7 @@ const onSignInSuccess = function (response) {
   $('#whimListDetails').show()
   $('#new-whim-btn').show()
   $('#display-all-whims').show()
+  $('#listBox').hide()
   // $('#old-game').show()
   // $('#game-history').show()
 
@@ -105,18 +106,35 @@ const onSignOutSuccess = function () {
 const onError = function (err) {
   // log any errors that occur
   console.error(err)
-  $('#game-message').text('Sorry, please try again.')
-  $('#game-message').addClass('failure')
+  $('#error-message').text('Sorry, please try again.')
+  $('#error-message').addClass('failure')
 
   $('form').trigger('reset')
 
   setTimeout(() => {
     // Clear the error message
-    $('#game-message').text('')
+    $('#error-message').text('')
     // Remove the class of 'success' from the element
-    $('#game-message').removeClass('failure')
+    $('#error-message').removeClass('failure')
   }, 5000)
 }
+
+// custom error message for any attempts to change/delete a resource not owned by the current user
+// const customError = function (err) {
+//   // log any errors that occur
+//   console.error(err)
+//   $('#error-message').text('Sorry, you do not own this entry.')
+//   $('#error-message').addClass('failure')
+//
+//   $('form').trigger('reset')
+//   $('#edit-whim-btn').hide()
+//   setTimeout(() => {
+//     // Clear the error message
+//     $('#error-message').text('')
+//     // Remove the class of 'success' from the element
+//     $('#error-message').removeClass('failure')
+//   }, 5000)
+// }
 
 // store.whims = ''
 // store.array = []
@@ -184,41 +202,43 @@ const onWhimIndexSuccess = function (responseData) {
     // let elements = ['LI', 'BUTTON']
     // for (var i = 0; i < elements.length; i++) {
     //   let p = document.createElement(elements[i]) }
-    let p = document.createElement('LI')
-    p.textContent = whim.title
-    document.querySelector('#whimListTitles').appendChild(p)
-    // find the indexOf the (whim) from the array whimsArray.whims
-    // p.value = whimsArray.whims.indexOf(whim)
+    if (whim.owner === store.user._id) {
+      let p = document.createElement('LI')
+      p.textContent = whim.title
+      document.querySelector('#whimListTitles').appendChild(p)
+      // find the indexOf the (whim) from the array whimsArray.whims
+      // p.value = whimsArray.whims.indexOf(whim)
 
-    let e = document.createElement('BUTTON')
-    e.textContent = 'Edit Whim'
+      let e = document.createElement('BUTTON')
+      e.textContent = 'Edit Whim'
 
-    // e.id = 'edit_button'
-    // e.setAttribute("id", "edit_button")
+      // e.id = 'edit_button'
+      // e.setAttribute("id", "edit_button")
 
-    // function findValue (array) {
-    //   return array.indexOf(whim.text)
-    // }
-    // e.value = findValue(whimsArray.whims)
-    // console.log(e.value)
-    // find the indexOf the (whim) from the array whimsArray.whims
-    e.value = whim._id
-    // e.className = 'edit_modal'
-    e.text = whim.text
-    e.title = whim.title
-    e.setAttribute('class', 'editButton')
-    document.querySelector('#whimListTitles').appendChild(e)
+      // function findValue (array) {
+      //   return array.indexOf(whim.text)
+      // }
+      // e.value = findValue(whimsArray.whims)
+      // console.log(e.value)
+      // find the indexOf the (whim) from the array whimsArray.whims
+      e.value = whim._id
+      // e.className = 'edit_modal'
+      e.text = whim.text
+      e.title = whim.title
+      e.setAttribute('class', 'editButton')
+      document.querySelector('#whimListTitles').appendChild(e)
 
-    let x = document.createElement('LI')
-    x.textContent = whim.text
-    document.querySelector('#whimListDetails').appendChild(x)
+      let x = document.createElement('LI')
+      x.textContent = whim.text
+      document.querySelector('#whimListDetails').appendChild(x)
 
-    let b = document.createElement('BUTTON')
-    b.textContent = 'Delete Whim'
-    // b.id = 'delete_button'
-    b.value = whim._id
-    b.setAttribute('class', 'deleteButton')
-    document.querySelector('#whimListDetails').appendChild(b)
+      let b = document.createElement('BUTTON')
+      b.textContent = 'Delete Whim'
+      // b.id = 'delete_button'
+      b.value = whim._id
+      b.setAttribute('class', 'deleteButton')
+      document.querySelector('#whimListDetails').appendChild(b)
+    }
   })
   // $('#display-title').text(data.whims[0].title)
   // $('#display-details').text(data.whims[0].text)

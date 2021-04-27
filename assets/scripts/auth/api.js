@@ -53,7 +53,7 @@ const signOut = function () {
   })
 }
 
-const newWhim = function (newWhimTitle, newWhimDetails) {
+const newWhim = function (newWhimTitle, newWhimDetails, id) {
   return $.ajax({
     method: 'POST',
     // asking for new game
@@ -65,7 +65,7 @@ const newWhim = function (newWhimTitle, newWhimDetails) {
       whim: {
         title: newWhimTitle,
         text: newWhimDetails,
-        owner: store.user._id
+        owner: id
       }
     }
   })

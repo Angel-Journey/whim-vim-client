@@ -93,13 +93,16 @@ const onNewWhim = function (event) {
   console.log(formData)
   console.log(formData.newWhim.title) // shows New Whim Title
   console.log(formData.newWhim.details) // shows New Whim Details
+  console.log(store.user._id)
 
   const newWhimTitle = formData.newWhim.title
 
   const newWhimDetails = formData.newWhim.details
 
+  const id = store.user._id
+
   // make a request to API
-  api.newWhim(newWhimTitle, newWhimDetails)
+  api.newWhim(newWhimTitle, newWhimDetails, id)
     // show success or failure
     .then(ui.onNewWhimSuccess(newWhimTitle, newWhimDetails))
     .catch(ui.onError)
@@ -110,6 +113,10 @@ const onWhimIndex = function (event) {
   event.preventDefault()
 
   console.log(event)
+
+  console.log(store.user._id)
+
+  const id = store.user._id
 
   // make a request to API
   api.whimIndex()
