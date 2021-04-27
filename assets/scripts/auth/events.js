@@ -22,7 +22,7 @@ const onSignUp = function (event) {
   // get the data from our form
   const formData = getFormFields(form)
 
-  // console.log(formData)
+  // // console.log(formData)
 
   // make a request to submit sign-up form data to API
   api.signUp(formData)
@@ -41,7 +41,7 @@ const onChangePassword = function (event) {
   // get the data from our form
   const formData = getFormFields(form)
 
-  // console.log(formData)
+  // // console.log(formData)
 
   // make a request to submit change-password form data to API
   api.changePassword(formData)
@@ -60,7 +60,7 @@ const onSignIn = function (event) {
   // get the data from our form
   const formData = getFormFields(form)
 
-  // console.log(formData)
+  // // console.log(formData)
 
   // make a request to API
   api.signIn(formData)
@@ -90,10 +90,10 @@ const onNewWhim = function (event) {
   // get the data from our form
   const formData = getFormFields(form)
 
-  console.log(formData)
-  console.log(formData.newWhim.title) // shows New Whim Title
-  console.log(formData.newWhim.details) // shows New Whim Details
-  console.log(store.user._id)
+  // console.log(formData)
+  // console.log(formData.newWhim.title) // shows New Whim Title
+  // console.log(formData.newWhim.details) // shows New Whim Details
+  // console.log(store.user._id)
 
   const newWhimTitle = formData.newWhim.title
 
@@ -112,9 +112,9 @@ const onWhimIndex = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
   event.preventDefault()
 
-  console.log(event)
+  // console.log(event)
 
-  console.log(store.user._id)
+  // console.log(store.user._id)
 
   const id = store.user._id
 
@@ -131,24 +131,29 @@ const onEditButton = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
   event.preventDefault()
 
-  console.log(event)
-  console.log('test edit')
+  // console.log(event)
+  // console.log('test edit')
 
-  console.log($('#whimListTitles'))
+  // console.log($('#whimListTitles'))
 
-  console.log(event.target.value)
-  console.log(event.target.title)
-  console.log(event.target.text)
+  // console.log(event.target.value)
+  // console.log(event.target.title)
+  // console.log(event.target.text)
 
   const whimId = event.target.value
   const whimText = event.target.text
   const whimTitle = event.target.title
   store.whimId = whimId
 
+  if (whimId === 0) {
+    // this sets the function to only work if the `Edit Whim` button is clicked
+    return
+  }
+
   ui.onEditButtonClick(whimId, whimText, whimTitle)
 
   // const newWhimDetails = formData.newWhim.details
-  // console.log(newWhimDetails)
+  // // console.log(newWhimDetails)
 
   // // make a request to API
   // api.whimIndex(id, newWhimDetails)
@@ -161,10 +166,10 @@ const onEditWhim = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
   event.preventDefault()
 
-  console.log(event)
-  console.log('test editWhim')
-  // console.log(whimId)
-  // console.log(event.target.value)
+  // console.log(event)
+  // console.log('test editWhim')
+  // // console.log(whimId)
+  // // console.log(event.target.value)
 
   $('#editWhimModal').modal('toggle')
 
@@ -172,12 +177,12 @@ const onEditWhim = function (event) {
   const form = event.target
   // get the data from our form
   const formData = getFormFields(form)
-  console.log(formData.newWhim.details)
+  // console.log(formData.newWhim.details)
   const newWhimDetails = formData.newWhim.details
 
   const newWhimTitle = formData.newWhim.title
 
-  console.log(store.whimId)
+  // console.log(store.whimId)
   const id = store.whimId
 
   // make a request to API
@@ -191,11 +196,16 @@ const onDeleteWhim = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
   event.preventDefault()
 
-  console.log(event)
-  console.log('test delete')
-  console.log(event.target.value)
+  // console.log(event)
+  // console.log('test delete')
+  // console.log(event.target.value)
 
   const id = event.target.value
+
+  // this sets the function to only work if the `Delete Whim` button is clicked
+  if (id === 0) {
+    return
+  }
 
   // // make a request to API
   api.deleteWhim(id)

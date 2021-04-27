@@ -51,8 +51,8 @@ const onSignUpSuccess = function () {
 
 const onSignInSuccess = function (response) {
   store.user = response.user
-  console.log(store.user)
-  console.log(store)
+  // console.log(store.user)
+  // console.log(store)
   $('#message').text(response.user.email + ' has successfully signed in!')
 
   $('#message').addClass('success')
@@ -141,12 +141,12 @@ const onError = function (err) {
 
 const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
   // store.user = response.user
-  // console.log('Store user value is ' + store.user.value)
-  // console.log('Store value is ' + store)
-  console.log('This is ui.js ' + newWhimTitle)
-  console.log('This is ui.js ' + newWhimDetails)
+  // // console.log('Store user value is ' + store.user.value)
+  // // console.log('Store value is ' + store)
+  // console.log('This is ui.js ' + newWhimTitle)
+  // console.log('This is ui.js ' + newWhimDetails)
   store.whims = newWhimTitle + ' : ' + newWhimDetails
-  console.log(store.whims)
+  // console.log(store.whims)
   $('#message').text('New Whim Created! Click "Whim Index" to view updated list')
   $('#message').addClass('success')
 
@@ -165,7 +165,7 @@ const onNewWhimSuccess = function (newWhimTitle, newWhimDetails) {
 store.Array = []
 
 const onWhimIndexSuccess = function (responseData) {
-  // console.log('This is the index list ' + whimsArray)
+  // // console.log('This is the index list ' + whimsArray)
   $('#sign-up-btn').hide()
   $('#sign-in-btn').hide()
   $('#edit-whim-btn').hide()
@@ -175,12 +175,12 @@ const onWhimIndexSuccess = function (responseData) {
   $('#listBox').show()
   $('#message').text('')
   const whimsArray = responseData
-  console.log(whimsArray)
-  console.log(whimsArray.whims)
-  // console.log(data.whims.array)
-  // console.log(data.whims[0])
-  // console.log(data.whims[0].title)
-  // console.log(data.whims[0].text)
+  // console.log(whimsArray)
+  // console.log(whimsArray.whims)
+  // // console.log(data.whims.array)
+  // // console.log(data.whims[0])
+  // // console.log(data.whims[0].title)
+  // // console.log(data.whims[0].text)
 
   // whimsArray.whims.forEach(whim => {
   //   $('#display-title').html(whim.title)
@@ -196,7 +196,7 @@ const onWhimIndexSuccess = function (responseData) {
   // //   document.querySelector('#display-details-test').appendChild(x)
   // })
   store.Array = whimsArray.whims
-  console.log(store.Array)
+  // console.log(store.Array)
 
   whimsArray.whims.forEach((whim) => {
     // let elements = ['LI', 'BUTTON']
@@ -205,6 +205,7 @@ const onWhimIndexSuccess = function (responseData) {
     if (whim.owner === store.user._id) {
       let p = document.createElement('LI')
       p.textContent = whim.title
+      p.setAttribute('class', 'titleText')
       document.querySelector('#whimListTitles').appendChild(p)
       // find the indexOf the (whim) from the array whimsArray.whims
       // p.value = whimsArray.whims.indexOf(whim)
@@ -219,7 +220,7 @@ const onWhimIndexSuccess = function (responseData) {
       //   return array.indexOf(whim.text)
       // }
       // e.value = findValue(whimsArray.whims)
-      // console.log(e.value)
+      // // console.log(e.value)
       // find the indexOf the (whim) from the array whimsArray.whims
       e.value = whim._id
       // e.className = 'edit_modal'
@@ -230,6 +231,7 @@ const onWhimIndexSuccess = function (responseData) {
 
       let x = document.createElement('LI')
       x.textContent = whim.text
+      x.setAttribute('class', 'detailsText')
       document.querySelector('#whimListDetails').appendChild(x)
 
       let b = document.createElement('BUTTON')
@@ -256,9 +258,9 @@ const onWhimDeleteSuccess = function () {
 }
 
 const onEditButtonClick = function (whimId, whimText, whimTitle) {
-  console.log('This is the id: ' + whimId)
-  console.log('This is the text: ' + whimText)
-  console.log('This is the title: ' + whimTitle)
+  // console.log('This is the id: ' + whimId)
+  // console.log('This is the text: ' + whimText)
+  // console.log('This is the title: ' + whimTitle)
   $('#edit-whim-btn').show()
   $('#editWhimModal.modal-title').text('Edit Title, which is currently: ' + "'" + whimTitle + "'" + ' or edit Details, which is currently: ' + "'" + whimText + "'")
   // $('#edit-whim-form').placeholder(whimText)

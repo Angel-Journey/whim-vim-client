@@ -132,7 +132,10 @@ h2, h3, h4, h5, p {
 li:not(:last-child) {
     padding-top: 20px;
     padding-bottom: 10px;
-    list-style-position: inside;
+    text-align: center;
+    .list-item {
+    display: inline-block;
+}
 
 //     flex-grow: 1;
 // flex-basis: auto;
@@ -143,14 +146,19 @@ li:not(:last-child) {
 
 ul {
     list-style-type: none;
-    border: 1px solid #fea02f;
-    list-style-position: inside;
+    font-size: 30px;
+    // border: 1px solid #fea02f;
+    // border: 1px solid pink;
+    text-align: center;
+    .list-item {
+        display: inline-block;
+    }
 
-//     display: flex;
-// flex-direction: row;
-// flex-wrap: wrap;
-// justify-content: space-between;
-// margin-left: -1px;
+    // display: flex;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    // justify-content: center;
+    // margin-left: -1px;
 }
 
 // .board {
@@ -168,50 +176,50 @@ ul {
 //   align-items: center;
 // }
 
-.box {
-  align-items: center;
-  display: flex;
-  height: 50vmin;
-  justify-content: center;
-  transition: .25s ease-in;
-  width: 50vmin;
-
-
-    // &.dark {
-    //   background: #222;
-    //   color: #fff;
-    //
-    //   &:hover {
-    //     background: #fea02f;
-    //     }
-    // }
-
-    // &.light {
-    //   background: white;
-    //   color: #fff;
-    //   text-color: black;
-    //
-    //   &:hover {
-    //     background: #fea02f;
-    //     }
-    // }
-
-    &.middle {
-      background: white;
-      color: #fff;
-      text-color: black;
-
-      // &:hover {
-      //   background: #fea02f;
-      //   }
-    }
-
-  & > h1 {
-    font-family: sans-serif;
-    text-align: center;
-    user-select: none;
-    }
-}
+// .box {
+//   align-items: center;
+//   display: flex;
+//   height: 50vmin;
+//   justify-content: center;
+//   transition: .25s ease-in;
+//   width: 50vmin;
+//
+//
+//     // &.dark {
+//     //   background: #222;
+//     //   color: #fff;
+//     //
+//     //   &:hover {
+//     //     background: #fea02f;
+//     //     }
+//     // }
+//
+//     // &.light {
+//     //   background: white;
+//     //   color: #fff;
+//     //   text-color: black;
+//     //
+//     //   &:hover {
+//     //     background: #fea02f;
+//     //     }
+//     // }
+//
+//     &.middle {
+//       background: white;
+//       color: #fff;
+//       text-color: black;
+//
+//       // &:hover {
+//       //   background: #fea02f;
+//       //   }
+//     }
+//
+//   & > h1 {
+//     font-family: sans-serif;
+//     text-align: center;
+//     user-select: none;
+//     }
+// }
 
 // #new-whim-box {
 //   float:left;
@@ -279,12 +287,26 @@ ul {
   // opacity: .80;
   font-weight: bold;
   border-radius: 5px;
+  font-size: 20px
 }
 
 .editButton {
   background: #fea02f;
   font-weight: bold;
   border-radius: 5px;
+  font-size: 20px
+}
+
+.edit-button {
+  font-size: 20px;
+  background: #003f5a;
+  font-weight: bold;
+  border-radius: 5px;
+  color: white;
+}
+
+#edit-whim-container {
+  padding-top: 50px;
 }
 
 .sign-up-form-btn {
@@ -313,6 +335,32 @@ ul {
   color: #003f5a;
 }
 
+#titlesBoxTest {
+  text-align: center;
+}
+
+#detailsBoxTest {
+  text-align: center;
+}
+
+.titleText {
+  // border: 1px solid #fea02f;
+  text-align: center;
+  user-select: none;
+  font-size: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.detailsText {
+  // border: 1px solid #fea02f;
+  text-align: center;
+  user-select: none;
+  font-size: 30px;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
 .modal {
     position: fixed;
     top: 10%;
@@ -329,6 +377,6 @@ ul {
     box-sizing: border-box;
 }
 
-    // .modal.on {
-    //     display: block;
-    // }
+    .modal.on {
+        display: block;
+    }
