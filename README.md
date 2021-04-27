@@ -5,6 +5,7 @@ This application allows the user to mangage a list of their favorite hobbies. Th
 
 # Important Links
 * API Repo: [view here](https://github.com/Angel-Journey/whim-vim-api)
+* Deployed API: [view here](https://whim-vim-api.herokuapp.com)
 * Deployed Client: [view here](https://angel-journey.github.io/whim-vim-client/)
 
 # User Stories
