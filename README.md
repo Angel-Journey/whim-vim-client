@@ -4,9 +4,8 @@
 This application allows the user to mangage a list of their favorite hobbies. They can create new list entries, read their list, update pre-existing entries, and delete entries.
 
 # Important Links
-* Other Repo ...
-* Deployed API ...
-* Deployed Client ...
+* API Repo: [view here](https://angel-journey.github.io/whim-vim-client/)
+* Deployed Client: [view here](https://angel-journey.github.io/whim-vim-client/)
 
 # User Stories
 * As a user I want to sign in/up.
