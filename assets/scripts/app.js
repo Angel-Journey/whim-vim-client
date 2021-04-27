@@ -37,14 +37,6 @@ $(() => {
 
   $('#whimListDetails').on('click', authEvents.onDeleteWhim)
 
-  $('#new-game').on('click', authEvents.onNewGame)
-
-  $('#game-history').on('click', authEvents.onGameHistory)
-
-  $('#old-game').on('click', authEvents.onOldGameBoardID)
-
-  // $('.box').on('click', authEvents.onNewMoveClick)
-
   $('#new-whim-form').on('submit', authEvents.onNewWhim)
   $('#display-all-whims').on('click', authEvents.onWhimIndex)
 })

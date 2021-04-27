@@ -116,7 +116,7 @@ const onWhimIndex = function (event) {
 
   // console.log(store.user._id)
 
-  const id = store.user._id
+  // const id = store.user._id
 
   // make a request to API
   api.whimIndex()
