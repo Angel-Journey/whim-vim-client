@@ -105,7 +105,7 @@ const onSignOutSuccess = function () {
 
 const onError = function (err) {
   // log any errors that occur
-  console.error(err)
+  // console.error(err)
   $('#error-message').text('Sorry, please try again.')
   $('#error-message').addClass('failure')
 
