@@ -152,7 +152,7 @@ const onEditButton = function (event) {
     return
   }
 
-  ui.onEditButtonClick(whimId, whimText, whimTitle)
+  ui.onEditButtonClick(whimText, whimTitle)
 
   // const newWhimDetails = formData.newWhim.details
   // // console.log(newWhimDetails)
