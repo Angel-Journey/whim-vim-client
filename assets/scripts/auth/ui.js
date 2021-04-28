@@ -254,7 +254,7 @@ const onEditButtonClick = function (whimId, whimText, whimTitle) {
   // console.log('This is the id: ' + whimId)
   // console.log('This is the text: ' + whimText)
   // console.log('This is the title: ' + whimTitle)
-  $('#edit-whim-btn').show()
+  // $('#edit-whim-btn').show()
   $('#editWhimModal.modal-title').text('Edit Title, which is currently: ' + "'" + whimTitle + "'" + ' or edit Details, which is currently: ' + "'" + whimText + "'")
   // $('#edit-whim-form').placeholder(whimText)
   $('#edit-whim-form').on('submit', authEvents.onEditWhim)

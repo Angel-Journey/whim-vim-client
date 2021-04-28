@@ -131,6 +131,8 @@ const onEditButton = function (event) {
   // prevent the defaul action of refreshing the page when a form is submitted
   event.preventDefault()
 
+  $('#editWhimModal').modal('toggle')
+
   // console.log(event)
   // console.log('test edit')
 
