@@ -1,7 +1,7 @@
 # whim-vim-client
 
 # Application Title: A Description
-This application allows the user to mangage a list of their favorite hobbies. They can create new list entries, read their list, update pre-existing entries, and delete entries.
+This application allows the user to manage a list of their favorite hobbies. They can create new list entries, read their list, update pre-existing entries, and delete entries.
 
 # Important Links
 * API Repo: [view here](https://github.com/Angel-Journey/whim-vim-api)
